@@ -1,0 +1,7 @@
+build/
+node_modules/
+pot*.ptau
+__pycache__
+
+*.swp
+*~
