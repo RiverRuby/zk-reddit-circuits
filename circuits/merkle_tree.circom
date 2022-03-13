@@ -1,8 +1,8 @@
-/*
-    mostly copied from https://github.com/tornadocash/tornado-core/
-*/
+pragma circom 2.0.2;
 
 include "../node_modules/circomlib/circuits/mimcsponge.circom";
+
+// mostly copied from https://github.com/tornadocash/tornado-core/
 
 // Returns MiMC(left, right)
 template HashLeftRight() {
@@ -27,8 +27,8 @@ template Swap() {
     signal output out[2];
 
     s * (1-s) === 0;
-    out[0] = (in[1] - in[0]) * s + in[0];
-    out[1] = (in[0] - in[1]) * s + in[1];
+    out[0] <== (in[1] - in[0]) * s + in[0];
+    out[1] <== (in[0] - in[1]) * s + in[1];
 }
 
 // Verify leaf is in tree with merkle branch and root
@@ -46,8 +46,8 @@ template VerifyBranch(depth) {
         // TODO: may need to swap inputs to swapper
         swapper[i] = Swap();
         swapper[i].s <== branch_side[i];
-        swapper[i].in[0] <== branch[i];
-        swapper[i].in[1] <== (i == 0) ? leaf : hash_func[i-1].hash;
+        swapper[i].in[0] <== (i == 0) ? leaf : hash_func[i-1].hash;
+        swapper[i].in[1] <== branch[i];
 
         hash_func[i] = HashLeftRight();
         hash_func[i].left <== swapper[i].out[0];
@@ -56,4 +56,3 @@ template VerifyBranch(depth) {
 
     root === hash_func[depth-1].hash;
 }
-

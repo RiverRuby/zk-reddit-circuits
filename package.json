@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "big-integer": "^1.6.51",
     "circomlib": "^2.0.3"
   }
 }
