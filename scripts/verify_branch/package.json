@@ -1,0 +1,13 @@
+{
+    "dependencies": {
+      "big-integer": "^1.6.51",
+      "chai": "^4.3.6",
+      "circom_tester": "^0.0.10",
+      "circomlib": "^2.0.3",
+      "mocha": "^9.2.2"
+    },
+    "scripts": {
+      "test": "mocha --recursive"
+    }
+  }
+  
