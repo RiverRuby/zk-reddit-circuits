@@ -2,7 +2,7 @@ pragma circom 2.0.2;
 
 include "../node_modules/circomlib/circuits/mimcsponge.circom";
 
-// mostly copied from https://github.com/tornadocash/tornado-core/
+// copied from https://github.com/tornadocash/tornado-core/ & rewritten
 
 // Returns MiMC(left, right)
 template HashLeftRight() {
