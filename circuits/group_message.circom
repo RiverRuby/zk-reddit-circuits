@@ -35,16 +35,16 @@ template GroupMembershipMessageSign(n, k, d) {
     signal input pubkey[2][k];
 
     // Step 1: signature verification
-    // component sigVerify = ECDSAVerify(n, k);
-    // for (var i = 0; i < k; i++) {
-    //     sigVerify.r[i] <== r[i];
-    //     sigVerify.s[i] <== s[i];
-    //     sigVerify.msghash[i] <== msghash[i];
-    //     for (var j = 0; j < 2; j++) {
-    //         sigVerify.pubkey[j][i] <== pubkey[j][i];
-    //     }
-    // }
-    // sigVerify.result <== 1;
+    component sigVerify = ECDSAVerify(n, k);
+    for (var i = 0; i < k; i++) {
+        sigVerify.r[i] <== r[i];
+        sigVerify.s[i] <== s[i];
+        sigVerify.msghash[i] <== msghash[i];
+        for (var j = 0; j < 2; j++) {
+            sigVerify.pubkey[j][i] <== pubkey[j][i];
+        }
+    }
+    sigVerify.result <== 1;
 
     // Step 2: get address associated with public key
     // adapted from https://github.com/jefflau/zk-identity

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 PHASE1=../../circuits/pot16_final.ptau
-BUILD_DIR=../../build/verify_branch
-CIRCUIT_NAME=verify_branch_7
+BUILD_DIR=../../build/group_message_nosig
+CIRCUIT_NAME=group_message_nosig_86_3_7
 
 if [ -f "$PHASE1" ]; then
     echo "Found Phase 1 ptau file"
