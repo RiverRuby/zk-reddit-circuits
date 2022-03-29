@@ -1,6 +1,4 @@
-// Adapted from https://github.com/vocdoni/keccak256-circom
-
-pragma circom 2.0.0;
+pragma circom 2.0.2;
 
 include "../../node_modules/circomlib/circuits/gates.circom";
 include "../../node_modules/circomlib/circuits/sha256/xor3.circom";
@@ -14,7 +12,7 @@ template Xor5(n) {
     signal input e[n];
     signal output out[n];
     var i;
-
+    
     component xor3 = Xor3(n);
     for (i=0; i<n; i++) {
         xor3.a[i] <== a[i];

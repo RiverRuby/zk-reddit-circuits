@@ -1,6 +1,4 @@
-// Adapted from https://github.com/vocdoni/keccak256-circom
-
-pragma circom 2.0.0;
+pragma circom 2.0.2;
 
 include "./utils.circom";
 
@@ -795,3 +793,4 @@ template Iota(r) {
         out[i] <== in[i];
     }
 }
+

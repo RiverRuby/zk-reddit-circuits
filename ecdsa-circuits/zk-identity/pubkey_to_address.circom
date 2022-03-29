@@ -1,10 +1,8 @@
-// adapted from https://github.com/jefflau/zk-identity
+pragma circom 2.0.2;
 
-pragma circom 2.0.1;
+include "../vocdoni-keccak/keccak.circom";
 
-include "./keccak256-circom/keccak.circom";
-
-include "../node_modules/circomlib/circuits/bitify.circom";
+include "../../node_modules/circomlib/circuits/bitify.circom";
 
 /*
  * Possibly generalizable, but for now just flatten a single pubkey from k n-bit chunks to a * single bit array
@@ -81,7 +79,7 @@ template PubkeyToAddress() {
     // convert the last 160 bits (20 bytes) into the number corresponding to address
     // the output of keccak is 32 bytes. bytes are arranged from largest to smallest
     // but bytes themselves are little-endian bitstrings of 8 bits
-    // we want a little-endian bitstring of 160 bits
+    // we just want a little-endian bitstring of 160 bits
     component bits2Num = Bits2Num(160);
     for (var i = 0; i < 20; i++) {
       for (var j = 0; j < 8; j++) {

@@ -1,8 +1,8 @@
 pragma circom 2.0.2;
 
-include "../../node_modules/circomlib/circuits/mimcsponge.circom"
-include "../circom-ecdsa/circuits/ecdsa.circom"
-include "./pubkey_to_address.circom"
+include "../node_modules/circomlib/circuits/mimcsponge.circom"
+include "../ecdsa-circuits/ecdsa.circom"
+include "../ecdsa-circuits/zk-identity/pubkey_to_address.circom";
 
 // signature (r, s), msghash, and pubkey have coordinates encoded with k registers of n bits each
 // merkle tree has depth d
