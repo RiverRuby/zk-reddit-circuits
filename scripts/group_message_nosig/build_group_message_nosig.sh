@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PHASE1=../../circuits/pot16_final.ptau
+PHASE1=../../circuits/pot21_final.ptau
 BUILD_DIR=../../build/group_message_nosig
 CIRCUIT_NAME=group_message_nosig_86_3_7
 

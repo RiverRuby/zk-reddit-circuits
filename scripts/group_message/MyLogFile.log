@@ -1,0 +1,58 @@
+Tue Mar 29 06:57:35 2022  [TRACE]: Start Initializing a b c A
+Tue Mar 29 06:57:35 2022  [TRACE]: Processing coefs
+Tue Mar 29 06:57:35 2022  [TRACE]: Calculating c
+Tue Mar 29 06:57:35 2022  [TRACE]: Initializing fft
+Tue Mar 29 06:57:35 2022  [TRACE]: Start iFFT A
+Tue Mar 29 06:57:35 2022  [TRACE]: a After ifft:
+Tue Mar 29 06:57:35 2022  [TRACE]: Start Shift A
+Tue Mar 29 06:57:35 2022  [TRACE]: a After shift:
+Tue Mar 29 06:57:35 2022  [TRACE]: Start FFT A
+Tue Mar 29 06:57:36 2022  [TRACE]: a After fft:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start iFFT B
+Tue Mar 29 06:57:36 2022  [TRACE]: b After ifft:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start Shift B
+Tue Mar 29 06:57:36 2022  [TRACE]: b After shift:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start FFT B
+Tue Mar 29 06:57:36 2022  [TRACE]: b After fft:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start iFFT C
+Tue Mar 29 06:57:36 2022  [TRACE]: c After ifft:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start Shift C
+Tue Mar 29 06:57:36 2022  [TRACE]: c After shift:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start FFT C
+Tue Mar 29 06:57:36 2022  [TRACE]: c After fft:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start ABC
+Tue Mar 29 06:57:36 2022  [TRACE]: abc:
+Tue Mar 29 06:57:36 2022  [TRACE]: Start Multiexp H
+Tue Mar 29 06:57:38 2022  [TRACE]: Start Multiexp A
+Tue Mar 29 06:57:38 2022  [TRACE]: Start Multiexp B1
+Tue Mar 29 06:57:38 2022  [TRACE]: Start Multiexp B2
+Tue Mar 29 06:57:39 2022  [TRACE]: Start Multiexp C
+Tue Mar 29 07:02:52 2022  [TRACE]: Start Initializing a b c A
+Tue Mar 29 07:02:52 2022  [TRACE]: Processing coefs
+Tue Mar 29 07:02:52 2022  [TRACE]: Calculating c
+Tue Mar 29 07:02:52 2022  [TRACE]: Initializing fft
+Tue Mar 29 07:02:52 2022  [TRACE]: Start iFFT A
+Tue Mar 29 07:02:52 2022  [TRACE]: a After ifft:
+Tue Mar 29 07:02:52 2022  [TRACE]: Start Shift A
+Tue Mar 29 07:02:52 2022  [TRACE]: a After shift:
+Tue Mar 29 07:02:52 2022  [TRACE]: Start FFT A
+Tue Mar 29 07:02:53 2022  [TRACE]: a After fft:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start iFFT B
+Tue Mar 29 07:02:53 2022  [TRACE]: b After ifft:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start Shift B
+Tue Mar 29 07:02:53 2022  [TRACE]: b After shift:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start FFT B
+Tue Mar 29 07:02:53 2022  [TRACE]: b After fft:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start iFFT C
+Tue Mar 29 07:02:53 2022  [TRACE]: c After ifft:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start Shift C
+Tue Mar 29 07:02:53 2022  [TRACE]: c After shift:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start FFT C
+Tue Mar 29 07:02:53 2022  [TRACE]: c After fft:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start ABC
+Tue Mar 29 07:02:53 2022  [TRACE]: abc:
+Tue Mar 29 07:02:53 2022  [TRACE]: Start Multiexp H
+Tue Mar 29 07:02:55 2022  [TRACE]: Start Multiexp A
+Tue Mar 29 07:02:55 2022  [TRACE]: Start Multiexp B1
+Tue Mar 29 07:02:55 2022  [TRACE]: Start Multiexp B2
+Tue Mar 29 07:02:56 2022  [TRACE]: Start Multiexp C

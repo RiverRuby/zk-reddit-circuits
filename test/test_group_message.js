@@ -52,7 +52,7 @@ function gen_nosig_input(merkle_proof_length) {
   return proof;
 }
 
-async function gen_sig_input(merkle_proof_length) {
+async function gen_sig_input(merkle_proof_length, n, k) {
   let leaves = new Array(2 ** merkle_proof_length);
   let wallets = new Array(2 ** merkle_proof_length);
 
@@ -67,13 +67,13 @@ async function gen_sig_input(merkle_proof_length) {
 
   proof.pubkey = new Array(2);
   proof.pubkey[0] = bigint_to_array(
-    86,
-    3,
+    n,
+    k,
     BigInt("0x" + wallets[rand_leaf_ind].publicKey.slice(4, 4 + 64))
   ).map((el) => el.toString());
   proof.pubkey[1] = bigint_to_array(
-    86,
-    3,
+    n,
+    k,
     BigInt("0x" + wallets[rand_leaf_ind].publicKey.slice(68, 68 + 64))
   ).map((el) => el.toString());
 
@@ -81,18 +81,18 @@ async function gen_sig_input(merkle_proof_length) {
   let signature = await wallets[rand_leaf_ind].signMessage(message);
 
   proof.r = bigint_to_array(
-    86,
-    3,
+    n,
+    k,
     BigInt("0x" + signature.slice(2, 2 + 64))
   ).map((el) => el.toString());
   proof.s = bigint_to_array(
-    86,
-    3,
+    n,
+    k,
     BigInt("0x" + signature.slice(66, 66 + 64))
   ).map((el) => el.toString());
   proof.msghash = bigint_to_array(
-    86,
-    3,
+    n,
+    k,
     BigInt(ethers.utils.hashMessage(message))
   ).map((el) => el.toString());
 
@@ -108,7 +108,8 @@ describe("verify group message nosig", function () {
     );
     await circuit.loadConstraints();
 
-    let testData = gen_nosig_input(7);
+    let testData = await gen_nosig_input(7);
+    console.log(JSON.stringify(testData));
 
     const witness = await circuit.calculateWitness(testData, true);
     await circuit.checkConstraints(witness);
@@ -116,15 +117,16 @@ describe("verify group message nosig", function () {
 });
 
 describe("verify group message with sig", function () {
-  this.timeout(100000);
+  this.timeout(1200000);
 
   it("merkle proof of depth 7", async () => {
     let circuit = await wasm_tester(
-      path.join(__dirname, "circuits", "group_message_86_3_7.circom")
+      path.join(__dirname, "circuits", "group_message_64_4_7.circom")
     );
     await circuit.loadConstraints();
 
-    let testData = gen_sig_input(7);
+    let testData = await gen_sig_input(7, 64, 4);
+    console.log(JSON.stringify(testData));
 
     const witness = await circuit.calculateWitness(testData, true);
     await circuit.checkConstraints(witness);

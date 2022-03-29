@@ -1,8 +1,9 @@
 pragma circom 2.0.2;
 
-include "../node_modules/circomlib/circuits/mimcsponge.circom"
-include "../ecdsa-circuits/ecdsa.circom"
+include "../node_modules/circomlib/circuits/mimcsponge.circom";
+include "../ecdsa-circuits/ecdsa.circom";
 include "../ecdsa-circuits/zk-identity/pubkey_to_address.circom";
+include "./merkle_tree.circom";
 
 // signature (r, s), msghash, and pubkey have coordinates encoded with k registers of n bits each
 // merkle tree has depth d
@@ -35,7 +36,7 @@ template GroupMembershipMessageSign(n, k, d) {
     signal input pubkey[2][k];
 
     // Step 1: signature verification
-    component sigVerify = ECDSAVerify(n, k);
+    component sigVerify = ECDSAVerifyNoPubkeyCheck(n, k);
     for (var i = 0; i < k; i++) {
         sigVerify.r[i] <== r[i];
         sigVerify.s[i] <== s[i];
@@ -44,7 +45,7 @@ template GroupMembershipMessageSign(n, k, d) {
             sigVerify.pubkey[j][i] <== pubkey[j][i];
         }
     }
-    sigVerify.result <== 1;
+    sigVerify.result === 1;
 
     // Step 2: get address associated with public key
     // adapted from https://github.com/jefflau/zk-identity
@@ -53,8 +54,8 @@ template GroupMembershipMessageSign(n, k, d) {
 
     component flattenPubkey = FlattenPubkey(n, k);
     for (var i = 0; i < k; i++) {
-        flattenPubkey.chunkedPubkey[0][i] <== chunkedPubkey[0][i];
-        flattenPubkey.chunkedPubkey[1][i] <== chunkedPubkey[1][i];
+        flattenPubkey.chunkedPubkey[0][i] <== pubkey[0][i];
+        flattenPubkey.chunkedPubkey[1][i] <== pubkey[1][i];
     }
     for (var i = 0; i < 512; i++) {
         pubkeyBits[i] <== flattenPubkey.pubkeyBits[i];

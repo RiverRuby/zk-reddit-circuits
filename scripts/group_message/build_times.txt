@@ -1,0 +1,95 @@
+[ec2-user@ip-172-31-10-11 group_message]$ ./build_group_message.sh 
+Found Phase 1 ptau file
+No build directory found. Creating build directory...
+****COMPILING CIRCUIT****
++ circom group_message_64_4_7.circom --r1cs --wasm --sym --c --wat --output ../../build/group_message
+template instances: 230
+non-linear constraints: 1669331
+linear constraints: 0
+public inputs: 5
+public outputs: 0
+private inputs: 30
+private outputs: 0
+wires: 1660774
+labels: 4400611
+Written successfully: ../../build/group_message/group_message_64_4_7.r1cs
+Written successfully: ../../build/group_message/group_message_64_4_7.sym
+Written successfully: ../../build/group_message/group_message_64_4_7_cpp/group_message_64_4_7.cpp and ../../build/group_message/group_message_64_4_7_cpp/group_message_64_4_7.dat
+Written successfully: ../../build/group_message/group_message_64_4_7_cpp/main.cpp, circom.hpp, calcwit.hpp, calcwit.cpp, fr.hpp, fr.cpp, fr.asm and Makefile
+Written successfully: ../../build/group_message/group_message_64_4_7_js/group_message_64_4_7.wat
+Written successfully: ../../build/group_message/group_message_64_4_7_js/group_message_64_4_7.wasm
+Everything went okay, circom safe
+DONE (120s)
+
+****GENERATING WITNESS FOR SAMPLE INPUT****
++ node ../../build/group_message/group_message_64_4_7_js/generate_witness.js ../../build/group_message/group_message_64_4_7_js/group_message_64_4_7.wasm input_group_message_64_4_7.json ../../build/group_message/witness.wtns
+DONE (191s)
+
+****STARTING ZKEY SETUP****
++ snarkjs groth16 setup ../../build/group_message/group_message_64_4_7.r1cs ../../circuits/pot21_final.ptau ../../build/group_message/group_message_64_4_7_0.zkey
+[INFO]  snarkJS: Reading r1cs
+[INFO]  snarkJS: Reading tauG1
+[INFO]  snarkJS: Reading tauG2
+[INFO]  snarkJS: Reading alphatauG1
+[INFO]  snarkJS: Reading betatauG1
+[INFO]  snarkJS: Circuit hash: 
+                f74f5a4a 0f9c02ac 179926e1 f5a94047
+                62bd9c66 de4d0917 8bb8498a 37cbbc94
+                8e2e7b3f 1fd1d163 349c4459 47b6be14
+                be7eec92 2bd7ad00 1e37751f 010abc48
+DONE (805s)
+
+****GENERATING FINAL ZKEY****
++ snarkjs zkey beacon ../../build/group_message/group_message_64_4_7_0.zkey ../../build/group_message/group_message_64_4_7.zkey 0102030405060708090a0b0c0d0e0f101112231415161718221a1b1c1d1e1f 10 '-n=Final Beacon phase2'
+[INFO]  snarkJS: Contribution Hash: 
+                3891d25f b91111e4 876ef837 b0fddc04
+                e82142d0 716f25f3 b4f0d8a8 1c31685e
+                e8aa7025 e4c5477e 1f1d3e9c 337f4cae
+                a5f70481 633f0833 c444c902 ae973bf8
+DONE (168s)
+
+****VERIFYING FINAL ZKEY****
++ snarkjs zkey verify ../../build/group_message/group_message_64_4_7.r1cs ../../circuits/pot21_final.ptau ../../build/group_message/group_message_64_4_7.zkey
+[INFO]  snarkJS: Reading r1cs
+[INFO]  snarkJS: Reading tauG1
+[INFO]  snarkJS: Reading tauG2
+[INFO]  snarkJS: Reading alphatauG1
+[INFO]  snarkJS: Reading betatauG1
+[INFO]  snarkJS: Circuit hash: 
+                f74f5a4a 0f9c02ac 179926e1 f5a94047
+                62bd9c66 de4d0917 8bb8498a 37cbbc94
+                8e2e7b3f 1fd1d163 349c4459 47b6be14
+                be7eec92 2bd7ad00 1e37751f 010abc48
+[INFO]  snarkJS: Circuit Hash: 
+                f74f5a4a 0f9c02ac 179926e1 f5a94047
+                62bd9c66 de4d0917 8bb8498a 37cbbc94
+                8e2e7b3f 1fd1d163 349c4459 47b6be14
+                be7eec92 2bd7ad00 1e37751f 010abc48
+[INFO]  snarkJS: -------------------------
+[INFO]  snarkJS: contribution #1 Final Beacon phase2:
+                3891d25f b91111e4 876ef837 b0fddc04
+                e82142d0 716f25f3 b4f0d8a8 1c31685e
+                e8aa7025 e4c5477e 1f1d3e9c 337f4cae
+                a5f70481 633f0833 c444c902 ae973bf8
+[INFO]  snarkJS: Beacon generator: 0102030405060708090a0b0c0d0e0f101112231415161718221a1b1c1d1e1f
+[INFO]  snarkJS: Beacon iterations Exp: 10
+[INFO]  snarkJS: -------------------------
+[INFO]  snarkJS: ZKey Ok!
+DONE (851s)
+
+** Exporting vkey
++ snarkjs zkey export verificationkey ../../build/group_message/group_message_64_4_7.zkey ../../build/group_message/vkey.json
+++ date +%s
++ end=1648536689
+DONE (2s)
+
+****GENERATING PROOF FOR SAMPLE INPUT****
++ snarkjs groth16 prove ../../build/group_message/group_message_64_4_7.zkey ../../build/group_message/witness.wtns ../../build/group_message/proof.json ../../build/group_message/public.json
+DONE (53s)
+
+****VERIFYING PROOF FOR SAMPLE INPUT****
++ snarkjs groth16 verify ../../build/group_message/vkey.json ../../build/group_message/public.json ../../build/group_message/proof.json
+[INFO]  snarkJS: OK!
+++ date +%s
++ end=1648536743
+DONE (1s)
