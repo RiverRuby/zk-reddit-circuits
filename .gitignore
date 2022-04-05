@@ -1,4 +1,5 @@
 build/
+!build/group_message_chunk/
 node_modules/
 pot*.ptau
 __pycache__
