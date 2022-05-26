@@ -1,0 +1,18 @@
+#!/bin/bash
+
+BUILD_DIR=../../build/dao_hack
+CIRCUIT_NAME=dao_hack_confession
+
+if [ ! -d "$BUILD_DIR" ]; then
+    echo "No build directory found. Creating build directory..."
+    mkdir -p "$BUILD_DIR"
+fi
+
+echo '****COMPILING CIRCUIT****'
+start=`date +%s`
+set -x
+circom "$CIRCUIT_NAME".circom --r1cs --wasm --sym --c --wat --output "$BUILD_DIR"
+{ set +x; } 2>/dev/null
+end=`date +%s`
+echo "DONE ($((end-start))s)"
+echo
