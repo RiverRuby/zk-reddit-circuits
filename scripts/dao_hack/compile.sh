@@ -1,7 +1,8 @@
 #!/bin/bash
 
-BUILD_DIR=../../build/dao_hack
 CIRCUIT_NAME=dao_hack_confession
+BUILD_DIR="../../build/$CIRCUIT_NAME"
+
 
 if [ ! -d "$BUILD_DIR" ]; then
     echo "No build directory found. Creating build directory..."
