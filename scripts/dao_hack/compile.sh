@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CIRCUIT_NAME=dao_hack_confession
+CIRCUIT_NAME=$1
 BUILD_DIR="../../build/$CIRCUIT_NAME"
 
 

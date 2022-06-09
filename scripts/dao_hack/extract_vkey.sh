@@ -1,4 +1,6 @@
-CIRCUIT_NAME=dummy
+#!/bin/bash
+
+CIRCUIT_NAME=$1
 BUILD_DIR="../../build/$CIRCUIT_NAME"
 
 echo "** Exporting vkey"
