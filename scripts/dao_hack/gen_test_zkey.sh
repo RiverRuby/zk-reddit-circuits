@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# NOTE: currently we're using the dummy circuit
 CIRCUIT_NAME=$1
 BUILD_DIR="../../build/$CIRCUIT_NAME"
 R1CS_FILE="$BUILD_DIR/$CIRCUIT_NAME.r1cs"
-PHASE1="../../pot8_final.ptau"
+PHASE1=$2
 
 echo "****GENERATING ZKEY 0****"
 start=`date +%s`
