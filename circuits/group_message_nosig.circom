@@ -1,6 +1,6 @@
 pragma circom 2.0.2;
 
-include "../circom-ecdsa/circuits/zk-identity/pubkey_to_address.circom";
+include "../circom-ecdsa/circuits/zk-identity/eth.circom";
 include "./merkle_tree.circom";
 
 // signature (r, s), msghash, and pubkey have coordinates encoded with k registers of n bits each
@@ -8,7 +8,7 @@ include "./merkle_tree.circom";
 template GroupMembershipMessageNoSign(n, k, d) {
     assert(k >= 2);
     assert(k <= 100);
-    
+
     /*
         This is a stripped version of main circuit to make sure certain inputs work.
 
