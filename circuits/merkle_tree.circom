@@ -1,6 +1,6 @@
 pragma circom 2.0.2;
 
-include "../node_modules/circomlib/circuits/mimcsponge.circom";
+include "../node_modules/circomlib/circuits/poseidon.circom";
 
 // copied from https://github.com/tornadocash/tornado-core/ & rewritten
 
@@ -10,12 +10,11 @@ template HashLeftRight() {
     signal input right;
     signal output hash;
 
-    component hash_func = MiMCSponge(2, 220, 1);
-    hash_func.ins[0] <== left;
-    hash_func.ins[1] <== right;
-    hash_func.k <== 0;
+    component hash_func = Poseidon(2);
+    hash_func.inputs[0] <== left;
+    hash_func.inputs[1] <== right;
     
-    hash <== hash_func.outs[0];
+    hash <== hash_func.out;
 }
 
 // if s == 0, return [in[0], in[1]]
